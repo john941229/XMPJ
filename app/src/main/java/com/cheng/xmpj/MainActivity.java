@@ -3,6 +3,7 @@ package com.cheng.xmpj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AppOpsManager;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -25,12 +26,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private Button mMiBtn, mAccessBtn;
+    public static final String HUAWEI_PERMISSION_PACKAGE_NAME = "com.huawei.systemmanager";
+    public static final String HUAWEI_APP_PERMISSION_ACTIVITY_NAME = "com.huawei.permissionmanager.ui.MainActivity";
+    private int huaweiVersion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         XLogger.init(true);
         setContentView(R.layout.activity_main);
+        huaweiVersion = getHuaweiSystemManagerVersion(MainActivity.this);
+
         mMiBtn = (Button) findViewById(R.id.button_mi);
         mMiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,7 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 if (isMiuiFloatWindowOpAllowed(MainActivity.this)) {
                     Toast.makeText(MainActivity.this, "以开启", Toast.LENGTH_SHORT).show();
                 } else {
-                    openMiuiPermissionActivity(MainActivity.this);
+                    if("Xiaomi".equals(Build.MANUFACTURER))
+                        openMiuiPermissionActivity(MainActivity.this);
+                    if("HUAWEI".equals(Build.MANUFACTURER))
+                        openHUAWEIpermissionActivity(MainActivity.this);
                 }
             }
         });
@@ -60,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
     public void openMiuiPermissionActivity(Context context) {
         Intent intent = new Intent("miui.intent.action.APP_PERM_EDITOR");
         String property=getProperty();
+        XLogger.e(property);
         intent.putExtra("property",property);
         if ("V5".equals(property)) {
             PackageInfo pInfo = null;
@@ -86,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("canking", "error");
             }
             intent.setClassName("com.miui.securitycenter",
-                    "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+                    "com.miui.permcenter.permissions.PermissionsEditorActivity");
             intent.putExtra("extra_pkgname", context.getPackageName());
 
         }
@@ -98,6 +108,32 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             Log.e("canking", "Intent is not available!");
+        }
+    }
+
+    /**
+    * 华为ROM*/
+    public void openHUAWEIpermissionActivity(Context context){
+        try {
+            Intent sysIntent = new Intent();
+            Intent guideIntent = null;
+//            if (huaweiVersion == 2 || huaweiVersion == 3 || huaweiVersion == 4) {
+//                sysIntent.setClassName(HUAWEI_PERMISSION_PACKAGE_NAME,
+//                        HUAWEI_APP_PERMISSION_ACTIVITY_NAME);
+//                context.startActivity(sysIntent);
+//            }
+//            else if (huaweiVersion == 6) {
+//                sysIntent.setClassName(HUAWEI_PERMISSION_PACKAGE_NAME,
+//                        HUAWEI_APP_PERMISSION_ACTIVITY_NAME);
+//                context.startActivity(sysIntent);
+//            }
+            sysIntent.setClassName(HUAWEI_PERMISSION_PACKAGE_NAME,
+                        HUAWEI_APP_PERMISSION_ACTIVITY_NAME);
+                context.startActivity(sysIntent);
+        }catch (ActivityNotFoundException e ){
+            XLogger.e(e.toString());
+        }catch (SecurityException e) {
+            XLogger.e(e.toString());
         }
     }
 
@@ -113,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static String getProperty() {
         String property = "null";
-        if (!"Xiaomi".equals(Build.MANUFACTURER)) {
+        if (!"Xiaomi".equals(Build.MANUFACTURER) ) {
             return property;
         }
         try {
@@ -124,10 +160,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return property;
+
     }
 
     /**
-     * 判断MIUI的悬浮窗权限
+     * 判断悬浮窗权限
      *
      * @param context
      * @return
@@ -173,5 +210,46 @@ public class MainActivity extends AppCompatActivity {
             XLogger.e("Below API 19 cannot invoke!");
         }
         return false;
+    }
+
+    public static int getHuaweiSystemManagerVersion(Context context) {
+        int version = 0;
+        int versionNum = 0;
+        int thirdPartFirtDigit = 0;
+        try {
+            PackageManager manager = context.getPackageManager();
+            PackageInfo info = manager.getPackageInfo(HUAWEI_PERMISSION_PACKAGE_NAME, 0);
+            String versionStr = info.versionName;
+            String versionTmp[] = versionStr.split("\\.");
+            if (versionTmp.length >= 2) {
+                if (Integer.parseInt(versionTmp[0]) == 5) {
+                    versionNum = 500;
+                } else if (Integer.parseInt(versionTmp[0]) == 4) {
+                    versionNum = Integer.parseInt(versionTmp[0]+versionTmp[1]+versionTmp[2]);
+                } else {
+                    versionNum = Integer.parseInt(versionTmp[0] + versionTmp[1]);
+                }
+
+            }
+            if (versionTmp.length >= 3) {
+                thirdPartFirtDigit = Integer.valueOf(versionTmp[2].substring(0, 1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (versionNum >= 330) {
+            if (versionNum >= 500) {
+                version = 6;
+            } else if (versionNum >= 400) {
+                version = 5;
+            } else if (versionNum >= 331) {
+                version = 4;
+            } else {
+                version = (thirdPartFirtDigit == 6 || thirdPartFirtDigit == 4 || thirdPartFirtDigit == 2 )? 3 : 2;
+            }
+        }  else if (versionNum != 0 ) {
+            version = 1;
+        }
+        return version;
     }
 }
