@@ -38,12 +38,12 @@ public class BaseAccessService extends AccessibilityService {
         }
         if (null != nodeInfo) {
             List<AccessibilityNodeInfo> list = nodeInfo.findAccessibilityNodeInfosByText(str);
-            if(list == null || list.size()<=0)
-            {
+            if(list == null || list.size()<=0) {
                 XLogger.i("LIST:"+list);
                 int a = nodeInfo.getChildCount();
                 for(int i=0;i<a;i++)
-                    XLogger.i("AAAAAAA"+nodeInfo.getChild(i));}
+                    XLogger.i("AAAAAAA"+nodeInfo.getChild(i));
+            }
             if (null != list && list.size() > 0) {
                 AccessibilityNodeInfo node = list.get(list.size() - 1);
                 if (node.isClickable()) {

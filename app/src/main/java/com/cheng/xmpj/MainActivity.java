@@ -3,6 +3,8 @@ package com.cheng.xmpj;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AppOpsManager;
+import android.app.Application;
+import android.app.Service;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
@@ -25,7 +27,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private Button mMiBtn, mAccessBtn;
+    private Button mMiBtn, mAccessBtn, offBtn;
     public static final String HUAWEI_PERMISSION_PACKAGE_NAME = "com.huawei.systemmanager";
     public static final String HUAWEI_APP_PERMISSION_ACTIVITY_NAME = "com.huawei.permissionmanager.ui.MainActivity";
     private int huaweiVersion;
@@ -41,14 +43,18 @@ public class MainActivity extends AppCompatActivity {
         mMiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isMiuiFloatWindowOpAllowed(MainActivity.this)) {
-                    Toast.makeText(MainActivity.this, "以开启", Toast.LENGTH_SHORT).show();
-                } else {
-                    if("Xiaomi".equals(Build.MANUFACTURER))
-                        openMiuiPermissionActivity(MainActivity.this);
-                    if("HUAWEI".equals(Build.MANUFACTURER))
-                        openHUAWEIpermissionActivity(MainActivity.this);
-                }
+//                if (isMiuiFloatWindowOpAllowed(MainActivity.this)) {
+//                    Toast.makeText(MainActivity.this, "以开启", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    if("Xiaomi".equals(Build.MANUFACTURER))
+//                        openMiuiPermissionActivity(MainActivity.this);
+//                    if("HUAWEI".equals(Build.MANUFACTURER))
+//                        openHUAWEIpermissionActivity(MainActivity.this);
+//                }
+                if("Xiaomi".equals(Build.MANUFACTURER))
+                    openMiuiPermissionActivity(MainActivity.this);
+                if("HUAWEI".equals(Build.MANUFACTURER))
+                    openHUAWEIpermissionActivity(MainActivity.this);
             }
         });
         mAccessBtn = (Button) findViewById(R.id.button_access);
@@ -59,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(accessibleIntent);
             }
         });
+
     }
 
     /**
@@ -97,8 +104,10 @@ public class MainActivity extends AppCompatActivity {
             }
             intent.setClassName("com.miui.securitycenter",
                     "com.miui.permcenter.permissions.PermissionsEditorActivity");
-            intent.putExtra("extra_pkgname", context.getPackageName());
 
+            intent.putExtra("extra_pkgname", context.getPackageName());
+//            此处待发掘tabActivity接口
+//            intent.setClassName("com.miui.securitycenter","com.miui.permcenter.permissions.AppPermissionsTabActivity");
         }
 
         if (isActivityAvailable(context, intent)) {
@@ -174,11 +183,13 @@ public class MainActivity extends AppCompatActivity {
         final int version = Build.VERSION.SDK_INT;
         Log.d("version",version+"");
         if (version >= 19) {
+
             return checkOp(context, 24);  // AppOpsManager.OP_SYSTEM_ALERT_WINDOW
         } else {
             if ((context.getApplicationInfo().flags & 1 << 27) == 1 << 27) {
                 return true;
             } else {
+                XLogger.e("!!开启后:"+context.getApplicationInfo().flags);
                 return false;
             }
         }
@@ -252,4 +263,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return version;
     }
+
 }

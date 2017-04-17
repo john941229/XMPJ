@@ -5,6 +5,7 @@ import android.app.Service;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
+import android.widget.Toast;
 
 import com.cheng.xmpj.XLogger.XLogger;
 
@@ -31,38 +32,106 @@ public class CxAccessService extends BaseAccessService {
         if(( eventType == AccessibilityEvent.TYPE_VIEW_SCROLLED ||
                 eventType== AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED)
                 && event.getPackageName() != null){
-//        switch (eventType) {
-//            case AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED:
+
             String clazzName = event.getClassName().toString();
-            XLogger.e(clazzName);
-//            AccessibilityNodeInfo nodeInfo = event.getSource();
             AccessibilityNodeInfo nodeInfo = service.getRootInActiveWindow();
 
-            XLogger.i("eventType:" + eventType);
-            XLogger.i( "悬浮窗：" + clazzName);
-            if (clazzName.equals("com.miui.permcenter.permissions.PermissionsEditorActivity")) {
-                XLogger.i("Permissions"+end);
-                if (end) {
-                    clickByText(nodeInfo, "XMPJ");
-                } else {
-                    boolean access = clickByText(nodeInfo, "显示悬浮窗");
-                    XLogger.i("access" + access);
+
+            XLogger.e("!!!!!pkgname :"+event.getPackageName().toString());
+            /*
+            * 辅助功能自动退出-有未知bug
+            * */
+//            if(event.getPackageName().equals("com.android.settings")){
+//                List<AccessibilityNodeInfo> list = nodeInfo.findAccessibilityNodeInfosByText(
+//                        "Accessibility");
+//                if (list != null && list.size() > 0) {
+//                    String txt = "XXMMPPJJ";
+//                    list = nodeInfo.findAccessibilityNodeInfosByText(txt);
+//                    if (list != null && list.size() > 0) {
+//                        service.performGlobalAction(GLOBAL_ACTION_BACK);
+//                        return;
+//                    }
+//                }
+//                String txt = "XXMMPPJJ";
+//                list = nodeInfo.findAccessibilityNodeInfosByText(txt);
+//                if (list != null && list.size() > 0) {
+//                    service.performGlobalAction(GLOBAL_ACTION_BACK);
+//                    return;
+//                }
+//            }
+
+            if (event.getPackageName().equals("com.miui.securitycenter")) {
+                if(nodeInfo == null){
+                    return;
+                }
+                List<AccessibilityNodeInfo> list = nodeInfo.findAccessibilityNodeInfosByText(
+                    "XMPJ"
+                );
+                if(list != null && list.size() >0) {
+                    accessisbilityMap.put("isXMPJsetting",1);
+                    if ( !accessisbilityMap.containsKey("dh") ) {
+                        performMore(service, nodeInfo, "电话", "dh");
+                        return;
+                    }
+
+                    if ( !accessisbilityMap.containsKey("xfc") ) {
+                        performMore(service, nodeInfo, "显示悬浮窗", "xf");
+                        return;
+                    }
+
                 }
             }
-            if (clazzName.equals("miui.app.AlertDialog")) {
+            if (clazzName.equals("miui.app.AlertDialog") && accessisbilityMap.get("isXMPJsetting").equals(1) ) {
+                accessisbilityMap.put("isXMPJsetting",0);
                 end = clickByText(nodeInfo, "允许");
-                XLogger.i( "getClick:" + end);
             }
-            if(clazzName.equals(MainActivity.HUAWEI_APP_PERMISSION_ACTIVITY_NAME)){
-                XLogger.e("nodeInfo----"+nodeInfo.getChildCount()+"");
-                for(int i=0;i<nodeInfo.getChildCount();i++) {
-                    XLogger.e("nodeInfo--"+i+"----" + nodeInfo.getChild(i).getViewIdResourceName());
+            if (event.getPackageName().equals("com.huawei.systemmanager")) {
+                if(nodeInfo == null){
+                    return;
                 }
-                if (nodeInfo == null) {
+                List<AccessibilityNodeInfo> list = nodeInfo.findAccessibilityNodeInfosByText(
+                        "权限管理"
+                );
+                if(list != null && list.size() >0) {
+                    performMore(service, nodeInfo, "XMPJ", "HW_PJ_1");
                     return;
                 }
 
-                goes(nodeInfo,0);
+            }
+            if (event.getPackageName().equals("com.android.packageinstaller")) {
+                if(nodeInfo == null){
+                    return;
+                }
+                List<AccessibilityNodeInfo> list = nodeInfo.findAccessibilityNodeInfosByText(
+                        "应用权限"
+                );
+                if(list != null && list.size() >0) {
+                    performMore(service, nodeInfo, "设置单项权限", "HW_PJ_2");
+                    return;
+                }
+            }
+            if (event.getPackageName().equals("com.huawei.systemmanager")) {
+                if(nodeInfo == null){
+                    return;
+                }
+                List<AccessibilityNodeInfo> list = nodeInfo.findAccessibilityNodeInfosByText(
+                        "XMPJ"
+                );
+                if(list != null && list.size() >0) {
+                    performMore(service, nodeInfo, "信任此应用", "HW_PJ_3");
+                    return;
+                }
+            }
+//            if(clazzName.equals(MainActivity.HUAWEI_APP_PERMISSION_ACTIVITY_NAME)){
+//                XLogger.e("nodeInfo----"+nodeInfo.getChildCount()+"");
+//                for(int i=0;i<nodeInfo.getChildCount();i++) {
+//                    XLogger.e("nodeInfo--"+i+"----" + nodeInfo.getChild(i).getViewIdResourceName());
+//                }
+//                if (nodeInfo == null) {
+//                    return;
+//                }
+//
+//                goes(nodeInfo,0);
 //                List<AccessibilityNodeInfo> list = nodeInfo.findAccessibilityNodeInfosByText("触宝电话");
 //                XLogger.e("list---size"+list.size()+"");
 //
@@ -78,7 +147,7 @@ public class CxAccessService extends BaseAccessService {
 //
 //                }
 
-            }
+//            }
         }
     }
 
@@ -129,9 +198,11 @@ public class CxAccessService extends BaseAccessService {
         AccessibilityNodeInfo parent = list.get(0).getParent();
         if (parent != null) {
         //    TLog.d(TAG, "onAccessibilityEvent performMore= " + list.size() + ",isback=" + isGoback);
+            XLogger.e("accessibilityMap------"+accessisbilityMap);
             if (!accessisbilityMap.containsKey(key)) {
                 accessisbilityMap.put(key,1);
                 isGoback = false;
+                Toast.makeText(this, tagText+"---已开启", Toast.LENGTH_SHORT).show();
                 parent.performAction(AccessibilityNodeInfo.ACTION_CLICK);
             } else {
                 service.performGlobalAction(GLOBAL_ACTION_BACK);
