@@ -1,0 +1,20 @@
+
+hsquid:S1192"NDefine a constant instead of duplicating this literal "isXMPJsetting" 3 times.(š‹”ôùÿÿÿÿ
+Asquid:S1068"'Remove this unused "end" private field.(ğ„Ôıÿÿÿÿ
+Fsquid:S1068",Remove this unused "isGoback" private field.(óë€¸ÿÿÿÿÿ
+nsquid:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(µóˆœ
+lsquid:S1450"RRemove the "end" field and declare it as a local variable in the relevant methods.(ğ„Ôıÿÿÿÿ
+wsquid:S1132"]Move the "com.miui.securitycenter" string literal on the left side of this string comparison.(•åß£ıÿÿÿÿ
+tsquid:S1132"ZMove the "miui.app.AlertDialog" string literal on the left side of this string comparison.(²‹Ùùÿÿÿÿ
+wsquid:S1132"]Move the "android.widget.ListView" string literal on the left side of this string comparison.(†œ‡ïşÿÿÿÿ
+Asquid:S1481",Remove this unused "pkgname" local variable.(àª¡
+gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 31 to the 15 allowed.(šŠÈ
+Bsquid:S1172".Remove this unused method parameter "service".(’ÄE
+Tsquid:S2259"?NullPointerException might be thrown as 'list' is nullable here(úØ„î
+Tsquid:S2259"?NullPointerException might be thrown as 'list' is nullable here(úØ„î
+Psquid:S1854";Remove this useless assignment to local variable "pkgname".(àª¡
+Ssquid:S1155">Use isEmpty() to check whether the collection is empty or not.(•ñ¥À
+Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ÑàÃØşÿÿÿÿ
+Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ÑàÃØşÿÿÿÿ
+Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(â×—˜ÿÿÿÿÿ
+Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(â×—˜ÿÿÿÿÿ

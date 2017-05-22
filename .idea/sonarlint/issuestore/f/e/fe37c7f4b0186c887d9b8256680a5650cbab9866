@@ -1,0 +1,29 @@
+
+=squid:S1659"(Declare "mAccessBtn" on a separate line.(ß”Û°
+9squid:S1659"$Declare "offBtn" on a separate line.(ß”Û°
+Rsquid:S1197"8Move the array designator from the variable to the type.(¦„ž½øÿÿÿÿ
+]squid:S1192"HDefine a constant instead of duplicating this literal "canking" 3 times.(¥Ð¢¦
+msquid:S1192"XDefine a constant instead of duplicating this literal "com.miui.securitycenter" 3 times.(íÄñ¥
+?squid:S1068"*Remove this unused "offBtn" private field.(ß”Û°
+jsquid:S1450"URemove the "mMiBtn" field and declare it as a local variable in the relevant methods.(ß”Û°
+nsquid:S1450"YRemove the "mAccessBtn" field and declare it as a local variable in the relevant methods.(ß”Û°
+Vsquid:S1126"AReplace this if-then-else statement by a single return statement.(¿Õ‡Á
+Dsquid:S1481"*Remove this unused "pInfo" local variable.(Ê†¼³üÿÿÿÿ
+Jsquid:S1481"0Remove this unused "guideIntent" local variable.(ÍŒŒùÿÿÿÿ
+Asquid:S1481",Remove this unused "spClazz" local variable.(¼¾Ç¾
+gsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(ÜÚ—“
+9squid:S1166"%Either log or rethrow this exception.(ïõÙE
+9squid:S1166"%Either log or rethrow this exception.(ïõÙE
+9squid:S1166"%Either log or rethrow this exception.(Ö¤ßI
+?squid:S1166"%Either log or rethrow this exception.(ÿëÛßúÿÿÿÿ
+:squid:S1166"%Either log or rethrow this exception.(”ý¾
+:squid:S1166"%Either log or rethrow this exception.(”ý¾
+:squid:S1166"%Either log or rethrow this exception.(”ý¾
+Nsquid:S1854"9Remove this useless assignment to local variable "pInfo".(¢ØæÀ
+Psquid:S1854";Remove this useless assignment to local variable "spClazz".(¼¾Ç¾
+_squid:S2147"ECombine this catch with the one at line 136, which has the same body.(ÿëÛßúÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
+9squid:S2131"Use "Integer.toString" instead.(´”Ãîúÿÿÿÿ
+9squid:S2131"Use "Integer.toString" instead.(®›Ñ©þÿÿÿÿ
+Xsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(ÉÂ£óÿÿÿÿÿ

@@ -19,6 +19,7 @@ public class BaseAccessService extends AccessibilityService {
     @Override
     protected void onServiceConnected() {
         super.onServiceConnected();
+        XLogger.e("onServiceConnected...");
     }
 
     @Override

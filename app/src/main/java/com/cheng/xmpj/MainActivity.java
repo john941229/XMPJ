@@ -18,6 +18,7 @@ import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -25,36 +26,39 @@ import com.cheng.xmpj.XLogger.XLogger;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private Button mMiBtn, mAccessBtn, offBtn;
     public static final String HUAWEI_PERMISSION_PACKAGE_NAME = "com.huawei.systemmanager";
     public static final String HUAWEI_APP_PERMISSION_ACTIVITY_NAME = "com.huawei.permissionmanager.ui.MainActivity";
     private int huaweiVersion;
+    public Context context;
+
+    private Service mWindowService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         XLogger.init(true);
         setContentView(R.layout.activity_main);
-        huaweiVersion = getHuaweiSystemManagerVersion(MainActivity.this);
+
+        context = MainActivity.this;
 
         mMiBtn = (Button) findViewById(R.id.button_mi);
         mMiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (isMiuiFloatWindowOpAllowed(MainActivity.this)) {
-//                    Toast.makeText(MainActivity.this, "以开启", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    if("Xiaomi".equals(Build.MANUFACTURER))
-//                        openMiuiPermissionActivity(MainActivity.this);
-//                    if("HUAWEI".equals(Build.MANUFACTURER))
-//                        openHUAWEIpermissionActivity(MainActivity.this);
-//                }
+
                 if("Xiaomi".equals(Build.MANUFACTURER))
                     openMiuiPermissionActivity(MainActivity.this);
-                if("HUAWEI".equals(Build.MANUFACTURER))
+                if("HUAWEI".equals(Build.MANUFACTURER)){
+                    huaweiVersion = getHuaweiSystemManagerVersion(MainActivity.this);
+                    XLogger.e("huaweiVersion = "+huaweiVersion);
+                    Log.e("AAAAAAAAA",Locale.getDefault().getLanguage()+"  "+Locale.getDefault());
                     openHUAWEIpermissionActivity(MainActivity.this);
+                    WindowUtils.showPopupWindow(context);
+                }
             }
         });
         mAccessBtn = (Button) findViewById(R.id.button_access);
@@ -63,9 +67,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent accessibleIntent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
                 MainActivity.this.startActivity(accessibleIntent);
+
             }
         });
+        
+    }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if(WindowUtils.isShown) {
+            WindowUtils.hidePopupWindow();
+        }
     }
 
     /**
@@ -126,16 +139,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             Intent sysIntent = new Intent();
             Intent guideIntent = null;
-//            if (huaweiVersion == 2 || huaweiVersion == 3 || huaweiVersion == 4) {
-//                sysIntent.setClassName(HUAWEI_PERMISSION_PACKAGE_NAME,
-//                        HUAWEI_APP_PERMISSION_ACTIVITY_NAME);
-//                context.startActivity(sysIntent);
-//            }
-//            else if (huaweiVersion == 6) {
-//                sysIntent.setClassName(HUAWEI_PERMISSION_PACKAGE_NAME,
-//                        HUAWEI_APP_PERMISSION_ACTIVITY_NAME);
-//                context.startActivity(sysIntent);
-//            }
+
             sysIntent.setClassName(HUAWEI_PERMISSION_PACKAGE_NAME,
                         HUAWEI_APP_PERMISSION_ACTIVITY_NAME);
                 context.startActivity(sysIntent);

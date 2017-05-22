@@ -21,57 +21,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_0b62aa96ed937659019337b32132d0f0f6f5b853.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_eca2b68c993bb0addef15658ec85357a6ebc2e49.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_ea4786afede7c4715890c579c8c02cafb1dbb91b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_8aa4b633fadb195ebd6b1864f34c6905681e3df0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_8f1150c3eeb238873931971ec7d6242d4770fbc7.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
         <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_709728c171a1539de9f1769d65e05e22d445cef7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_0b62aa96ed937659019337b32132d0f0f6f5b853.jar" />
     </item>
     <item
         is-multidex="false"
@@ -84,12 +48,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_eca2b68c993bb0addef15658ec85357a6ebc2e49.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="d5c731fc64c03dfe04d51134955b483551c35849">
         <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_3657ad13f20301e60c23ff1cb742cc5aae5cf064.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_ea4786afede7c4715890c579c8c02cafb1dbb91b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -108,6 +90,24 @@
         revision="25.0.0"
         sha1="867dad63c33388ff8c7644b236579355036d075f">
         <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_f845acf4d317cfc89920c49cf1c092ef87cd0620.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_8aa4b633fadb195ebd6b1864f34c6905681e3df0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/cheng/XMPJ/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/cheng/XMPJ/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_8f1150c3eeb238873931971ec7d6242d4770fbc7.jar" />
     </item>
     <item
         is-multidex="false"
