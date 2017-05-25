@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.net.Uri;
 import android.os.Binder;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.cheng.xmpj.XLogger.XLogger;
 
 import java.lang.reflect.Method;
@@ -29,7 +31,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    private Button mMiBtn, mAccessBtn, offBtn;
+    private Button mMiBtn, mAccessBtn, tryBtn;
     public static final String HUAWEI_PERMISSION_PACKAGE_NAME = "com.huawei.systemmanager";
     public static final String HUAWEI_APP_PERMISSION_ACTIVITY_NAME = "com.huawei.permissionmanager.ui.MainActivity";
     private int huaweiVersion;
@@ -52,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if("Xiaomi".equals(Build.MANUFACTURER))
                     openMiuiPermissionActivity(MainActivity.this);
+                    WindowUtils.showPopupWindow(context);
                 if("HUAWEI".equals(Build.MANUFACTURER)){
                     huaweiVersion = getHuaweiSystemManagerVersion(MainActivity.this);
                     XLogger.e("huaweiVersion = "+huaweiVersion);
@@ -70,7 +73,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        
+
+        tryBtn = (Button) findViewById(R.id.button_try);
+        tryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sysIntent = new Intent();
+//            sysIntent.putExtra("extra_package_uid", android.os.Process.myUid());
+//            sysIntent.setClassName(GuideConst.MIUI_V5_PERMISSION_PACKAGE_NAME,
+//                    "com.android.settings.applications.InstalledAppDetailsTop");
+                sysIntent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                Uri uri = Uri.fromParts("package",context.getPackageName(),null);
+                sysIntent.setData(uri);
+                context.startActivity(sysIntent);
+
+            }
+        });
+
+        LottieAnimationView animationView = (LottieAnimationView) findViewById(R.id.aniview);
+        animationView.setAnimation("data.json");
+        animationView.loop(true);
+        animationView.playAnimation();
+
+
     }
 
     @Override

@@ -4,30 +4,19 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#50000000">
+        android:background="#60000000"
+        android:weightSum="1">
+        <TextView
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="40sp"
+            android:text="我是掩膜\n\n我是掩膜\n\n我是掩膜" />
 
-        <!--<Button-->
-            <!--android:id="@+id/negativeBtn"-->
-            <!--android:layout_width="65dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="btn1" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/positiveBtn"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="btn2" />-->
-
-        <!--<LinearLayout-->
-            <!--android:id="@+id/popup_window"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:background="#70000000"-->
-            <!--android:orientation="horizontal">-->
-
-        <!--</LinearLayout>-->
 
 
     </LinearLayout>
