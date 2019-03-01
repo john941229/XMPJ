@@ -24,7 +24,11 @@ D. public void run()
 E. public void run(int priority)  
 F. public void start(int priority)  
 
-5. 以下代码
+5. 以下代码输出结果是(____)  
+A. NULL  
+B. Compilation fails.  
+C. The code runs with no output.  
+D. An exception is thrown at runtime. 
 ```
   public class Test {
       public static void main(String[] args) {
@@ -33,11 +37,7 @@ F. public void start(int priority)
       }
   }
 ```
-输出结果是(____)  
-A. NULL  
-B. Compilation fails.  
-C. The code runs with no output.  
-D. An exception is thrown at runtime.  
+ 
 
 6. Http缺省的请求方法是。(____)  
 A. PU　　B. GET  
