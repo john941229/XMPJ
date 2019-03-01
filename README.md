@@ -1,28 +1,28 @@
 # Android笔试题（45分钟）
 ## 单项选择题
-1. 对于两个Activity A、B ，A通过startActivity()方法打开B。当在B中点击Back返回到A时，以下哪个方法 **不会** 被调用 （____）
-A.  A.onCreate()　　　　B.  A.onResume()
+1. 对于两个Activity A、B ，A通过startActivity()方法打开B。当在B中点击Back返回到A时，以下哪个方法 **不会** 被调用 （____）  
+A.  A.onCreate()　　　　B.  A.onResume()  
 C.  B.onPause()　　　　D.  B.onStop()
 
-2. 以下有关Java访问控制符描述 **错误** 的是 （____）
-A.  public可以被其他类所访问
-B.  protected可以在同一个包中的类访问
-C.  default可以被子类访问
-D.  private可以被当前类访问
+2. 以下有关Java访问控制符描述 **错误** 的是 （____）  
+A.  public可以被其他类所访问  
+B.  protected可以在同一个包中的类访问  
+C.  default可以被子类访问  
+D.  private可以被当前类访问  
 
-3. 以下关于Java容器的描述中， **错误** 的是（____）
-A. Hashtable不允许记录空值
-B. HashMap支持线程同步
-C. LinkedList的读取性能要比ArrayList差
-D. LinkedHashMap输出的顺序和输入的相同
+3. 以下关于Java容器的描述中， **错误** 的是（____）  
+A. Hashtable不允许记录空值  
+B. HashMap支持线程同步  
+C. LinkedList的读取性能要比ArrayList差  
+D. LinkedHashMap输出的顺序和输入的相同  
 
-4. Which method must be defined by a class implementing the java.lang.Runnable interface?(____)
-A. void run()
-B. void run(int priority)
-C. public void start()
-D. public void run()
-E. public void run(int priority)
-F. public void start(int priority)
+4. Which method must be defined by a class implementing the java.lang.Runnable interface?(____)  
+A. void run()  
+B. void run(int priority)  
+C. public void start()  
+D. public void run()  
+E. public void run(int priority)  
+F. public void start(int priority)  
 
 5. 以下代码
 ```
@@ -33,45 +33,45 @@ F. public void start(int priority)
       }
   }
 ```
-输出结果是(____)
-A. NULL
-B. Compilation fails.
-C. The code runs with no output.
-D. An exception is thrown at runtime.
+输出结果是(____)  
+A. NULL  
+B. Compilation fails.  
+C. The code runs with no output.  
+D. An exception is thrown at runtime.  
 
-6. Http缺省的请求方法是。(____)
-A. PU　　B. GET
+6. Http缺省的请求方法是。(____)  
+A. PU　　B. GET  
 C. POST　　D. TRACE
 
-7. TCP的协议数据单元被称为(____)
+7. TCP的协议数据单元被称为(____)  
 A. 比特　　B. 帧　　C. 分段　　D. 字符
 
 ## 多项选择题
 1. Which two CANNOT directly cause a thread to stop executing? (____)
-A. Existing from a synchronized block.
-B. Calling the wait method on an object.
-C. Calling notify method on an object.
-D. Calling read method on an InputStream object.
-E. Calling the SetPriority method on a Thread object.
-
+A. Existing from a synchronized block.  
+B. Calling the wait method on an object.  
+C. Calling notify method on an object.  
+D. Calling read method on an InputStream object.  
+E. Calling the SetPriority method on a Thread object.  
+ 
 2. 以下哪个方法不能在子类中被重写(____)
-A. final void methoda() {}
-B. void final methoda() {}
-C. static final void methoda() {}
-D. static void methoda() {}
-E. final abstract void methoda() {}
+A. final void methoda() {}  
+B. void final methoda() {}  
+C. static final void methoda() {}  
+D. static void methoda() {}  
+E. final abstract void methoda() {}  
 
 3. 在观察者模式中，表述正确的是(____)
-A. 观察者角色的更新是被动的。
-B. 被观察者可以通知观察者进行更新
-C. 观察者可以改变被观察者的状态，再由被观察者通知所有观察者依据被观察者的状态进行。
-D. 一个观察者可以观察多个被观察者的状态。
+A. 观察者角色的更新是被动的。  
+B. 被观察者可以通知观察者进行更新  
+C. 观察者可以改变被观察者的状态，再由被观察者通知所有观察者依据被观察者的状态进行。  
+D. 一个观察者可以观察多个被观察者的状态。  
 
 4. 两个不同的计算机类型能通信，以下描述错误的是(____)
-A. 它们都是兼容的协议组
-B. 它们都使用TCP/IP
-C. 它们符合OSI 模型
-D. 它们一个是Macintosh，一个是Unix 工作站
+A. 它们都是兼容的协议组  
+B. 它们都使用TCP/IP  
+C. 它们符合OSI 模型  
+D. 它们一个是Macintosh，一个是Unix 工作站  
 
 ## 代码查错题
 ```
