@@ -43,31 +43,31 @@ D. An exception is thrown at runtime.
 A. PU　　B. GET  
 C. POST　　D. TRACE
 
-7. TCP的协议数据单元被称为(____)  
+7. TCP的协议数据单元被称为(____)   
 A. 比特　　B. 帧　　C. 分段　　D. 字符
 
 ## 多项选择题
-1. Which two CANNOT directly cause a thread to stop executing? (____)
+1. Which two CANNOT directly cause a thread to stop executing? (____)  
 A. Existing from a synchronized block.  
 B. Calling the wait method on an object.  
 C. Calling notify method on an object.  
 D. Calling read method on an InputStream object.  
 E. Calling the SetPriority method on a Thread object.  
  
-2. 以下哪个方法不能在子类中被重写(____)
+2. 以下哪个方法不能在子类中被重写(____)  
 A. final void methoda() {}  
 B. void final methoda() {}  
 C. static final void methoda() {}  
 D. static void methoda() {}  
 E. final abstract void methoda() {}  
 
-3. 在观察者模式中，表述正确的是(____)
+3. 在观察者模式中，表述正确的是(____)  
 A. 观察者角色的更新是被动的。  
 B. 被观察者可以通知观察者进行更新  
 C. 观察者可以改变被观察者的状态，再由被观察者通知所有观察者依据被观察者的状态进行。  
 D. 一个观察者可以观察多个被观察者的状态。  
 
-4. 两个不同的计算机类型能通信，以下描述错误的是(____)
+4. 两个不同的计算机类型能通信，以下描述错误的是(____)  
 A. 它们都是兼容的协议组  
 B. 它们都使用TCP/IP  
 C. 它们符合OSI 模型  
